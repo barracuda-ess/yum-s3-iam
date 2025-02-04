@@ -74,7 +74,8 @@ def parse_url(url):
         return (m.group(2), None, m.group(3))
 
     # http[s]://<bucket>.s3-<aws-region>.amazonaws.com
-    m = re.match(r'(http|https|s3)://([a-z0-9][a-z0-9-.]{1,61}[a-z0-9])[.]s3-([a-z0-9-]+)[.]amazonaws[.]com(.*)$', url)
+    # http[s]://<bucket>.s3.<aws-region>.amazonaws.com
+    m = re.match(r'(http|https|s3)://([a-z0-9][a-z0-9-.]{1,61}[a-z0-9])[.]s3[-.]([a-z0-9-]+)[.]amazonaws[.]com(.*)$', url)
     if m:
         return (m.group(2), m.group(3), m.group(4))
 
